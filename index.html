@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="COMEX 官方黄金白银交割、期货期权成交持仓、EFP 与库存资料观察台。每个数值均可回溯原始报告。">
+  <meta name="color-scheme" content="light">
+  <title>COMEX 金银观察 · 官方数据工作台</title>
+  <link rel="stylesheet" href="versions/20261021T164755Z-b36f2152-1a5f728a02e3de09e05c/styles.css">
+  <meta name="comex-mode" content="public">
+  <script defer src="versions/20261021T164755Z-b36f2152-1a5f728a02e3de09e05c/app.js" data-version="20261021T164755Z-b36f2152-1a5f728a02e3de09e05c"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到数据内容</a>
+  <aside class="sidebar" aria-label="主导航">
+    <a class="brand" href="#delivery" aria-label="COMEX 金银观察首页"><span class="brand-symbol" aria-hidden="true">C<span>•</span></span><span>COMEX<br><small>金银观察</small></span></a>
+    <div class="rail-label">数据工作台</div>
+    <nav class="nav-list" id="navigation">
+      <button class="nav-item active" data-view="delivery" aria-current="page"><span class="nav-icon" aria-hidden="true">▥</span>日度交割<span class="nav-index">01</span></button>
+      <button class="nav-item" data-view="market"><span class="nav-icon" aria-hidden="true">⌁</span>成交与持仓<span class="nav-index">02</span></button>
+      <button class="nav-item" data-view="efp"><span class="nav-icon" aria-hidden="true">⇄</span>EFP 与交易<span class="nav-index">03</span></button>
+      <button class="nav-item" data-view="options"><span class="nav-icon" aria-hidden="true">⌘</span>金银期权<span class="nav-index">04</span></button>
+      <button class="nav-item" data-view="monthly"><span class="nav-icon" aria-hidden="true">▦</span>月度与年度<span class="nav-index">05</span></button>
+      <button class="nav-item" data-view="stocks"><span class="nav-icon" aria-hidden="true">▤</span>仓库库存<span class="nav-index">06</span></button>
+    </nav>
+    <div class="rail-bottom"><span class="live-dot"></span><span>官方报告 · 日度更新<br><small id="rail-count">正在读取数据</small></span></div>
+    <div class="rail-footnote">CME GROUP PUBLIC REPORTS<br>原始资料可追溯</div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="breadcrumb">研究工作台 <span>/</span> 金属 <span>/</span> <strong id="breadcrumb-view">日度交割</strong></span><div class="topbar-actions"><button class="text-button" id="share">分享当前视图</button><button class="text-button" id="refresh"><span aria-hidden="true">↻</span> 刷新数据</button></div></header>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><div class="eyebrow">COMEX / PRECIOUS METALS</div><h1>金银交割与市场数据</h1><p>从官方报告出发，观察交割、交易与库存的变化。</p></div><div class="archive-badge"><span class="live-dot"></span><div>报告资料库<small id="read-time">正在连接</small></div></div></div>
+      <section class="filterbar" aria-label="数据筛选">
+        <div class="product-switch" role="group" aria-label="标准合约产品"><button class="selected" data-product="GC" aria-pressed="true"><span class="metal-dot gold"></span>黄金 <small>GC</small></button><button data-product="SI" aria-pressed="false"><span class="metal-dot silver"></span>白银 <small>SI</small></button></div>
+        <div class="filter-field"><label for="start-date">业务日期范围</label><div class="date-inputs"><input id="start-date" type="date" aria-label="开始日期"><span>—</span><input id="end-date" type="date" aria-label="结束日期"></div></div>
+        <div class="range-presets" role="group" aria-label="快捷日期范围"><button class="selected" data-range="5d">近五交易日</button><button data-range="1m">1 月</button><button data-range="3m">3 月</button><button data-range="6m">6 月</button><button data-range="12m">12 月</button><button data-range="all">全部</button></div>
+        <div class="filter-field contract-field"><label for="contract-month">合约月份</label><select id="contract-month"><option value="all">全部合约月份</option></select></div>
+      </section>
+      <div class="history-toolbar"><div class="mode-switch" role="group" aria-label="数据区间"><button class="selected" data-mode="live" aria-pressed="true">正式积累</button><button data-mode="history" aria-pressed="false">历史样本</button></div><span id="share-status" role="status"></span></div>
+      <div id="range-error" class="range-error" role="alert" hidden>开始日期应早于或等于结束日期。</div>
+      <section id="collection-status" class="collection-strip" aria-label="采集与资料状态"></section>
+      <div id="quality-banner" class="quality-banner"></div>
+      <div id="selection-status" class="selection-status" aria-live="polite"></div>
+      <div id="loading" class="loading-state" role="status"><span class="loader"></span>正在读取校准后的官方报告…</div>
+      <section id="content" aria-live="polite"></section>
+      <aside id="point-details" class="point-details" aria-live="polite" hidden></aside>
+      <footer class="page-footer"><span>COMEX 金银观察 <b>·</b> 官方资料研究视图</span><span>通知量按 Issued / Stopped 一侧计数；EFP、交割通知与出库量分别观察。</span></footer>
+    </main>
+  </div>
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="source-drawer" id="source-drawer" aria-labelledby="drawer-title" role="dialog" aria-modal="true" hidden><div class="drawer-head"><div><div class="eyebrow">SOURCE & PROVENANCE</div><h2 id="drawer-title">原始报告</h2></div><button class="icon-button" id="close-drawer" aria-label="关闭资料详情">×</button></div><div id="drawer-content"></div></aside>
+  <div id="chart-tooltip" class="chart-tooltip" role="tooltip" hidden></div>
+</body>
+</html>
